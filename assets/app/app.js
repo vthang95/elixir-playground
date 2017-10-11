@@ -13,12 +13,6 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
 import Turbolinks from 'turbolinks'
-import { u } from 'umbrellajs'
-
-import alo from './vltn'
-
-
-console.log('okie1?')
 
 Turbolinks.start()
 
