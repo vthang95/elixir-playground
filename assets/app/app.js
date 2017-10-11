@@ -12,10 +12,15 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
-import Turbolinks from 'turbolinks';
-import alo from './vltn';
+import Turbolinks from 'turbolinks'
+import { u } from 'umbrellajs'
 
-console.log('okie?')
+import alo from './vltn'
+
+
+console.log('okie1?')
+
+Turbolinks.start()
 
 // Import local files
 //

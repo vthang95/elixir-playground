@@ -50,7 +50,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :condolavi, Condolavi.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "vthang95",
+  username: "condolavi",
   password: "",
   database: "condolavi_dev",
   hostname: "localhost",

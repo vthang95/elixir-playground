@@ -1,0 +1,3 @@
+<div class="jumbotron">
+  <h2><%= gettext "Welcome %{name}!", name: @name %></h2>
+</div>
