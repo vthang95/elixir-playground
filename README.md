@@ -2,6 +2,9 @@
 
 To start your Phoenix server:
 
+  * Make sure that your Docker is running. Run `make up` -> `make app`
+  Run `make bash to enter phoenix bash shell`
+
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `cd assets && npm install`

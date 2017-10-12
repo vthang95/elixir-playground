@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :condolavi, CondolaviWeb.Endpoint,
-  http: [port: 8600],
+  http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -50,8 +50,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :condolavi, Condolavi.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "condolavi",
-  password: "",
+  username: System.get_env("PG_USERNAME"),
+  password: System.get_env("PG_PASSWORD"),
+  hostname: System.get_env("PG_HOST") || "localhost",
   database: "condolavi_dev",
-  hostname: "localhost",
   pool_size: 10

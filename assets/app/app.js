@@ -14,6 +14,8 @@
 import "phoenix_html"
 import Turbolinks from 'turbolinks'
 
+console.log('Hello console');
+
 Turbolinks.start()
 
 // Import local files
