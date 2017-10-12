@@ -11,6 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get install -y nodejs
 RUN apt-get install -y inotify-tools
+RUN apt-get install -y yarn
 
 # create app folder
 RUN mkdir /app
