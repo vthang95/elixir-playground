@@ -1,9 +1,11 @@
-var webpack = require("webpack");
-var merge = require("webpack-merge");
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack")
+const merge = require("webpack-merge")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-var common = {
+const dev = process.env.NODE_ENV !== 'production'
+
+let common = {
   module: {
     rules: [
       {
@@ -30,33 +32,69 @@ var common = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false},
-      output: {comments: false}
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
-};
+}
+
+
+if (!dev) common.plugins.push(
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {warnings: false},
+    output: {comments: false}
+  })
+)
+
 
 module.exports = [
   merge(common, {
     entry: [
       "normalize.css",
-      __dirname + "/app/app.sass",
-      __dirname + "/app/app.js"
+      __dirname + "/admin/index.sass",
+      __dirname + "/admin/index.js"
     ],
+    module: {
+      rules: [{
+        test: /\.jsx$/,
+        exclude: [/node_modules/],
+        loader: "babel-loader"
+      }]
+    },
     output: {
       path: __dirname + "/../priv/static",
-      filename: "js/app.js"
+      filename: "js/admin.js"
     },
     resolve: {
       modules: [
         "node_modules",
-        __dirname + "/app"
+        __dirname + "/admin"
       ]
     },
     plugins: [
       new CopyWebpackPlugin([{ from: __dirname + "/static"}]),
-      new ExtractTextPlugin("css/app.css")
+      new ExtractTextPlugin("css/admin.css")
+    ]
+  }),
+  merge(common, {
+    entry: [
+      "normalize.css",
+      __dirname + "/shared/shared.sass",
+      __dirname + "/shared/shared.js"
+    ],
+    output: {
+      path: __dirname + "/../priv/static",
+      filename: "js/shared.js"
+    },
+    resolve: {
+      modules: [
+        "node_modules",
+        __dirname + "/shared"
+      ]
+    },
+    plugins: [
+      new CopyWebpackPlugin([{ from: __dirname + "/static"}]),
+      new ExtractTextPlugin("css/shared.css")
     ]
   })
-];
+]

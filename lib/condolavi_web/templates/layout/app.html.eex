@@ -8,8 +8,8 @@
     <meta name="author" content="">
 
     <title>Hello Condolavi!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/shared.css") %>">
+    <script src="<%= static_path(@conn, "/js/shared.js") %>"></script>
   </head>
 
   <body>
@@ -19,6 +19,7 @@
           <ul class="nav nav-pills pull-right">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
+            <li><a href="/admin">Admin</a></li>
           </ul>
         </nav>
         <span class="logo"></span>
@@ -30,7 +31,6 @@
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
-
     </div> <!-- /container -->
   </body>
 </html>

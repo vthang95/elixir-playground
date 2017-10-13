@@ -26,6 +26,12 @@ defmodule CondolaviWeb.Router do
     get "/about", PageController, :about
   end
 
+  scope "/admin", CondolaviWeb.Admin do
+    pipe_through [:browser]
+
+    get "/*path", PageController, :show
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", CondolaviWeb do
   #   pipe_through :api
